@@ -77,6 +77,9 @@ public class TambahInstrukturActivity extends AppCompatActivity implements View.
                 Toast.makeText(TambahInstrukturActivity.this, "pesan " + message,
                         Toast.LENGTH_SHORT).show();
                 clearText();
+                Intent myIntent = new Intent(TambahInstrukturActivity.this, MainActivity.class);
+                myIntent.putExtra("keyName", "instruktur");
+                startActivity(myIntent);
             }
         }
         SimpanDataInstruktur simpanDataInstruktur = new SimpanDataInstruktur();

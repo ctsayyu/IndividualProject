@@ -71,6 +71,9 @@ public class TambahMateriActivity extends AppCompatActivity implements View.OnCl
                 Toast.makeText(TambahMateriActivity.this, "pesan " + message,
                         Toast.LENGTH_SHORT).show();
                 clearText();
+                Intent myIntent = new Intent(TambahMateriActivity.this, MainActivity.class);
+                myIntent.putExtra("keyName", "materi");
+                startActivity(myIntent);
             }
         }
         SimpanDataMateri simpanDataMateri = new SimpanDataMateri();

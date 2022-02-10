@@ -74,6 +74,9 @@ public class TambahDetailKelasActivity extends AppCompatActivity implements View
                 Toast.makeText(TambahDetailKelasActivity.this, "pesan " + message,
                         Toast.LENGTH_LONG).show();
                 clearText();
+                Intent myIntent = new Intent(TambahDetailKelasActivity.this, MainActivity.class);
+                myIntent.putExtra("keyName", "detail kelas");
+                startActivity(myIntent);
             }
         }
         SimpanDataDetailKelas simpanDataDetailKelas = new SimpanDataDetailKelas();

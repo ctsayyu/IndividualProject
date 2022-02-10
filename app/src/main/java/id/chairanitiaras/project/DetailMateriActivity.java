@@ -152,7 +152,9 @@ public class DetailMateriActivity extends AppCompatActivity implements View.OnCl
                 Toast.makeText(DetailMateriActivity.this,
                         "pesan: " + message, Toast.LENGTH_LONG).show();
                 // redirect ke LihatDataActivity
-                startActivity(new Intent(DetailMateriActivity.this,MainActivity.class));
+                Intent myIntent = new Intent(DetailMateriActivity.this, MainActivity.class);
+                myIntent.putExtra("keyName", "materi");
+                startActivity(myIntent);
             }
         }
         DeleteDataMateri deleteDataMateri = new DeleteDataMateri();
@@ -193,7 +195,9 @@ public class DetailMateriActivity extends AppCompatActivity implements View.OnCl
                 Toast.makeText(DetailMateriActivity.this,
                         "pesan: " + message, Toast.LENGTH_LONG).show();
                 // redirect ke LihatDataActivity
-                startActivity(new Intent(DetailMateriActivity.this, MainActivity.class));
+                Intent myIntent2 = new Intent(DetailMateriActivity.this, MainActivity.class);
+                myIntent2.putExtra("keyName", "detail materi");
+                startActivity(myIntent2);
             }
         }
         UpdateDataMateri updateDataMateri= new UpdateDataMateri();

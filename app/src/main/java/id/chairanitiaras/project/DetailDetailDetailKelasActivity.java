@@ -156,7 +156,9 @@ public class DetailDetailDetailKelasActivity extends AppCompatActivity implement
                 Toast.makeText(DetailDetailDetailKelasActivity.this,
                         "pesan: " + message, Toast.LENGTH_SHORT).show();
                 // redirect ke LihatDataActivity
-                startActivity(new Intent(DetailDetailDetailKelasActivity.this,MainActivity.class));
+                Intent myIntent = new Intent(DetailDetailDetailKelasActivity.this, MainActivity.class);
+                myIntent.putExtra("keyName", "detail kelas");
+                startActivity(myIntent);
             }
         }
         DeleteDataDetailKelas deleteDataDetailKelas = new DeleteDataDetailKelas();
@@ -200,7 +202,9 @@ public class DetailDetailDetailKelasActivity extends AppCompatActivity implement
                 Toast.makeText(DetailDetailDetailKelasActivity.this,
                         "pesan: " + message, Toast.LENGTH_SHORT).show();
                 // redirect ke LihatDataActivity
-                startActivity(new Intent(DetailDetailDetailKelasActivity.this, MainActivity.class));
+                Intent myIntent2 = new Intent(DetailDetailDetailKelasActivity.this, MainActivity.class);
+                myIntent2.putExtra("keyName", "detail kelas");
+                startActivity(myIntent2);
             }
         }
         UpdateDataDetailKelas updateDataDetailKelas = new UpdateDataDetailKelas();

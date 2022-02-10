@@ -162,7 +162,9 @@ public class DetailPesertaActivity extends AppCompatActivity implements View.OnC
                 Toast.makeText(DetailPesertaActivity.this,
                         "pesan: " + message, Toast.LENGTH_LONG).show();
                 // redirect ke LihatDataActivity
-                startActivity(new Intent(DetailPesertaActivity.this,MainActivity.class));
+                Intent myIntent = new Intent(DetailPesertaActivity.this, MainActivity.class);
+                myIntent.putExtra("keyName", "peserta");
+                startActivity(myIntent);
             }
         }
         DeleteDataPeserta deleteDataPeserta = new DeleteDataPeserta();
@@ -209,7 +211,9 @@ public class DetailPesertaActivity extends AppCompatActivity implements View.OnC
                 Toast.makeText(DetailPesertaActivity.this,
                         "pesan: " + message, Toast.LENGTH_LONG).show();
                 // redirect ke LihatDataActivity
-                startActivity(new Intent(DetailPesertaActivity.this, MainActivity.class));
+                Intent myIntent2 = new Intent(DetailPesertaActivity.this, MainActivity.class);
+                myIntent2.putExtra("keyName", "peserta");
+                startActivity(myIntent2);
             }
         }
         UpdateDataPeserta updateDataPeserta = new UpdateDataPeserta();

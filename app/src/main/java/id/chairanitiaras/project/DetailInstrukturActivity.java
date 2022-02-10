@@ -158,7 +158,9 @@ public class DetailInstrukturActivity extends AppCompatActivity implements View.
                 Toast.makeText(DetailInstrukturActivity.this,
                         "pesan: " + message, Toast.LENGTH_SHORT).show();
                 // redirect ke LihatDataActivity
-                startActivity(new Intent(DetailInstrukturActivity.this,MainActivity.class));
+                Intent myIntent = new Intent(DetailInstrukturActivity.this, MainActivity.class);
+                myIntent.putExtra("keyName", "instruktur");
+                startActivity(myIntent);
             }
         }
         DeleteDataInstruktur deleteDataInstruktur = new DeleteDataInstruktur();
@@ -203,7 +205,9 @@ public class DetailInstrukturActivity extends AppCompatActivity implements View.
                 Toast.makeText(DetailInstrukturActivity.this,
                         "pesan: " + message, Toast.LENGTH_SHORT).show();
                 // redirect ke LihatDataActivity
-                startActivity(new Intent(DetailInstrukturActivity.this, MainActivity.class));
+                Intent myIntent2 = new Intent(DetailInstrukturActivity.this, MainActivity.class);
+                myIntent2.putExtra("keyName", "instruktur");
+                startActivity(myIntent2);
             }
         }
         UpdateDataInstruktur updateDataInstruktur = new UpdateDataInstruktur();

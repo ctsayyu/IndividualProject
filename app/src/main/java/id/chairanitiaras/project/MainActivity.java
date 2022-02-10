@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -19,6 +21,7 @@ import id.chairanitiaras.project.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private ActionBarDrawerToggle toggle;
+    String myStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +35,65 @@ public class MainActivity extends AppCompatActivity {
         // custom toolbar
         setSupportActionBar(binding.toolbar);
 
-        // default fragment dibuka pertama kali
-        getSupportActionBar().setTitle("Home");
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frameLayout, new HomeFragment())
-                .commit();
-        binding.navView.setCheckedItem(R.id.nav_home);
+        //set menu
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        Fragment fragmentMenu = null;
+        myStr = "home";
+        if(extras != null)
+            if(extras != null){
+                myStr = extras.getString("keyName");
+            } else {
+                myStr = "home";
+            }
+
+        switch (myStr){
+            case "home":
+                //default fragment dibuka pertama kali
+                getSupportActionBar().setTitle("Home");
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frameLayout, new HomeFragment())
+                        .commit();
+                binding.navView.setCheckedItem(R.id.nav_home);
+                break;
+            case "instruktur":
+                getSupportActionBar().setTitle("Instruktur");
+                fragmentMenu = new InstrukturFragment();
+                binding.drawer.closeDrawer(GravityCompat.START);
+                callFragment(fragmentMenu);
+                binding.navView.setCheckedItem(R.id.nav_instruktur);
+                break;
+            case "materi":
+                getSupportActionBar().setTitle("Materi");
+                fragmentMenu = new MateriFragment();
+                binding.drawer.closeDrawer(GravityCompat.START);
+                callFragment(fragmentMenu);
+                binding.navView.setCheckedItem(R.id.nav_materi);
+                Toast.makeText(this, "materi", Toast.LENGTH_LONG).show();
+                break;
+            case "peserta":
+                getSupportActionBar().setTitle("Peserta");
+                fragmentMenu = new PesertaFragment();
+                binding.drawer.closeDrawer(GravityCompat.START);
+                callFragment(fragmentMenu);
+                binding.navView.setCheckedItem(R.id.nav_materi);
+                break;
+            case "kelas":
+                getSupportActionBar().setTitle("Kelas");
+                fragmentMenu = new KelasFragment();
+                binding.drawer.closeDrawer(GravityCompat.START);
+                callFragment(fragmentMenu);
+                binding.navView.setCheckedItem(R.id.nav_materi);
+                break;
+            case "detail kelas":
+                getSupportActionBar().setTitle("Detail Kelas");
+                fragmentMenu = new DetailKelasFragment();
+                binding.drawer.closeDrawer(GravityCompat.START);
+                callFragment(fragmentMenu);
+                binding.navView.setCheckedItem(R.id.nav_materi);
+                break;
+        }
 
         // membuka drawer
         toggle = new ActionBarDrawerToggle(this, binding.drawer, binding.toolbar,

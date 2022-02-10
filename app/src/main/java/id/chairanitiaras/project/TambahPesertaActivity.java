@@ -80,6 +80,9 @@ public class TambahPesertaActivity extends AppCompatActivity implements View.OnC
                 Toast.makeText(TambahPesertaActivity.this, "pesan " + message,
                         Toast.LENGTH_SHORT).show();
                 clearText();
+                Intent myIntent = new Intent(TambahPesertaActivity.this, MainActivity.class);
+                myIntent.putExtra("keyName", "peserta");
+                startActivity(myIntent);
             }
         }
         SimpanDataPeserta simpanDataPeserta = new SimpanDataPeserta();
