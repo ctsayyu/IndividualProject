@@ -46,13 +46,15 @@
             android:layout_marginLeft="6dp"
             android:layout_marginRight="6dp"
             android:layout_weight="1"
-            android:text="Tambah Instruktur" />
+            android:text="Tambah Instruktur"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btn_lihat_instruktur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Lihat Instruktur" />
+            android:text="Lihat Instruktur"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </LinearLayout>

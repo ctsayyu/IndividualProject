@@ -26,7 +26,11 @@
             android:title="List Kelas" />
         <item
             android:id="@+id/nav_detail_kelas"
-            android:icon="@drawable/loupe"
+            android:icon="@drawable/information"
             android:title="List Detail Kelas" />
+        <item
+            android:id="@+id/nav_search_student_data"
+            android:icon="@drawable/loupe"
+            android:title="Search Data Peserta" />
     </group>
 </menu>

@@ -13,42 +13,54 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class PesertaFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class SearchStudentDataFragment extends Fragment {
     private String JSON_STRING;
-    ListView list_view_pst;
-    FloatingActionButton btn_tambah_peserta;
+    ListView list_view_search_pst;
+    String id_pst;
+    Button btn_search_pst;
+    TextView search_id_pst, search_nama_pst, search_email_pst, search_hp_pst, search_instansi_pst;
+    EditText edit_search_id_pst;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_peserta, container, false);
-        list_view_pst = view.findViewById(R.id.list_view_pst);
-        btn_tambah_peserta = view.findViewById(R.id.btn_tambah_peserta);
-
-        list_view_pst.setOnItemClickListener(this);
-
-        btn_tambah_peserta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), TambahPesertaActivity.class));
-            }
-        });
+        View view = inflater.inflate(R.layout.fragment_search_student_data, container, false);
+        list_view_search_pst = view.findViewById(R.id.list_view_search_pst);
+        btn_search_pst = view.findViewById(R.id.btn_search_pst);
+        edit_search_id_pst = view.findViewById(R.id.edit_search_id_pst);
+        search_id_pst = view.findViewById(R.id.search_id_pst);
+        search_nama_pst = view.findViewById(R.id.search_nama_pst);
+        search_email_pst = view.findViewById(R.id.search_email_pst);
+        search_hp_pst = view.findViewById(R.id.search_phone_pst);
+        search_instansi_pst = view.findViewById(R.id.search_instansi_pst);
 
         getJSON();
+
+        btn_search_pst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
         return view;
+
     }
 
     private void getJSON()
@@ -100,34 +112,30 @@ public class PesertaFragment extends Fragment implements AdapterView.OnItemClick
             for (int i = 0; i < result.length(); i++)
             {
                 JSONObject object = result.getJSONObject(i);
-                String id_pst = object.getString(Konfigurasi.TAG_JSON_ID_PST);
-                String name_pst = object.getString(Konfigurasi.TAG_JSON_NAMA_PST);
+                String search_id_pst = object.getString(Konfigurasi.TAG_JSON_ID_PST);
+                String search_nama_pst = object.getString(Konfigurasi.TAG_JSON_NAMA_PST);
+                String search_email_pst = object.getString(Konfigurasi.TAG_JSON_EMAIL_PST);
+                String search_hp_pst = object.getString(Konfigurasi.TAG_JSON_HP_PST);
+                String search_instansi_pst = object.getString(Konfigurasi.TAG_JSON_INSTANSI_PST);
 
-                HashMap<String, String> peserta = new HashMap<>();
-                peserta.put(Konfigurasi.TAG_JSON_ID_PST, id_pst);
-                peserta.put(Konfigurasi.TAG_JSON_NAMA_PST, name_pst);
+                HashMap<String, String> searchpst = new HashMap<>();
+                searchpst.put(Konfigurasi.TAG_JSON_ID_PST, search_id_pst);
+                searchpst.put(Konfigurasi.TAG_JSON_NAMA_PST, search_nama_pst);
+                searchpst.put(Konfigurasi.TAG_JSON_EMAIL_PST, search_email_pst);
+                searchpst.put(Konfigurasi.TAG_JSON_HP_PST, search_hp_pst);
+                searchpst.put(Konfigurasi.TAG_JSON_INSTANSI_PST, search_instansi_pst);
+
                 // ubah format json menjadi array list
-                list.add(peserta);
+                list.add(searchpst);
             }
         } catch (JSONException e)
         {
             e.printStackTrace();
         }
-        ListAdapter listAdapter =new SimpleAdapter(getActivity(),list, R.layout.activity_list_item_pst,
-                new String[]{Konfigurasi.TAG_JSON_ID_PST, Konfigurasi.TAG_JSON_NAMA_PST},
-                new int[]{R.id.search_id_pst, R.id.txt_nama_pst});
+        ListAdapter listAdapter =new SimpleAdapter(getActivity(),list, R.layout.list_item_search_student,
+                new String[]{Konfigurasi.TAG_JSON_ID_PST, Konfigurasi.TAG_JSON_NAMA_PST, Konfigurasi.TAG_JSON_EMAIL_PST, Konfigurasi.TAG_JSON_HP_PST, Konfigurasi.TAG_JSON_INSTANSI_PST},
+                new int[]{R.id.search_id_pst, R.id.search_nama_pst, R.id.search_email_pst, R.id.search_phone_pst, R.id.search_instansi_pst});
 
-        list_view_pst.setAdapter(listAdapter);
+        list_view_search_pst.setAdapter(listAdapter);
     }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-    {
-        Intent myIntent = new Intent(getActivity(), DetailPesertaActivity.class);
-        HashMap<String, String> map = (HashMap) parent.getItemAtPosition(position);
-        String pstId = map.get(Konfigurasi.TAG_JSON_ID_PST).toString();
-        myIntent.putExtra(Konfigurasi.PST_ID, pstId);
-        startActivity(myIntent);
-    }
-
 }

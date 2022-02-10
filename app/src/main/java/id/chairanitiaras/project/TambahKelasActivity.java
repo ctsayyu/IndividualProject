@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +25,8 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
     private EditText edit_tambah_tgl_mulai_kls, edit_tambah_tgl_akhir_kls, edit_tambah_id_ins_kls, edit_tambah_id_mat_kls;
     private Button btn_tambah_kelas, btn_lihat_kelas;
     Spinner spinner_ins, spinner_mat;
-    private String JSON_STRING;
+    private int spinner_value, spinner_value2;
+    private String JSON_STRING, JSON_STRING2, id_ins, n1, n2, j1, j2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +75,8 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
                 Log.d("Data_JSON", JSON_STRING);
 
                 JSONObject jsonObject = null;
-                ArrayList<String> arrayList = new ArrayList<>();
+                ArrayList<String> listID = new ArrayList<>();
+                ArrayList<String> listNama = new ArrayList<>();
 
                 try {
                     jsonObject = new JSONObject(JSON_STRING);
@@ -86,7 +89,9 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
                         String id = object.getString(Konfigurasi.TAG_JSON_ID_INS);
                         String name = object.getString(Konfigurasi.TAG_JSON_NAMA_INS);
 
-                        arrayList.add(id);
+                        listID.add(id);
+                        listNama.add(name);
+
                         Log.d("DataArr: ", String.valueOf(id));
                     }
 
@@ -94,12 +99,25 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
                     e.printStackTrace();
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahKelasActivity.this, android.R.layout.simple_spinner_dropdown_item, arrayList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahKelasActivity.this, android.R.layout.simple_spinner_dropdown_item, listNama);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                 spinner_ins.setAdapter(adapter);
                 //slct_spin = p_comp.getSelectedItem().toString();
-                Log.d("spin", String.valueOf(arrayList));
+
+                spinner_ins.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        spinner_value = Integer.parseInt(listID.get(i));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
+                Log.d("spin", String.valueOf(listID));
             }
         }
         GetJSON getJSON = new GetJSON();
@@ -129,14 +147,15 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
                 super.onPostExecute(s);
                 progressDialog.dismiss();
 
-                JSON_STRING = s;
-                Log.d("Data_JSON", JSON_STRING);
+                JSON_STRING2 = s;
+                Log.d("Data_JSON", JSON_STRING2);
 
                 JSONObject jsonObject = null;
-                ArrayList<String> arrayList = new ArrayList<>();
+                ArrayList<String> listID = new ArrayList<>();
+                ArrayList<String> listNama = new ArrayList<>();
 
                 try {
-                    jsonObject = new JSONObject(JSON_STRING);
+                    jsonObject = new JSONObject(JSON_STRING2);
                     JSONArray jsonArray = jsonObject.getJSONArray(Konfigurasi.TAG_JSON_ARRAY);
                     Log.d("Data_JSON_LIST: ", String.valueOf(jsonArray));
 
@@ -146,7 +165,8 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
                         String id = object.getString(Konfigurasi.TAG_JSON_ID_MAT);
                         String name = object.getString(Konfigurasi.TAG_JSON_NAMA_MAT);
 
-                        arrayList.add(id);
+                        listID.add(id);
+                        listNama.add(name);
                         Log.d("DataArr: ", String.valueOf(id));
                     }
 
@@ -154,12 +174,25 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
                     e.printStackTrace();
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahKelasActivity.this, android.R.layout.simple_spinner_dropdown_item, arrayList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahKelasActivity.this, android.R.layout.simple_spinner_dropdown_item, listNama);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                 spinner_mat.setAdapter(adapter);
+                spinner_mat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        spinner_value2 = Integer.parseInt(listID.get(i));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
+                spinner_mat.setAdapter(adapter);
                 //slct_spin = p_comp.getSelectedItem().toString();
-                Log.d("spin", String.valueOf(arrayList));
+                Log.d("spin", String.valueOf(listNama));
             }
         }
         GetJSON getJSON = new GetJSON();
@@ -179,8 +212,10 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
         // fields apa saja yang akan disimpan
         final String tgl_mulai_kls = edit_tambah_tgl_mulai_kls.getText().toString().trim();
         final String tgl_akhir_kls = edit_tambah_tgl_akhir_kls.getText().toString().trim();
-        final String id_ins_kls = spinner_ins.getSelectedItem().toString().trim();
-        final String id_mat_kls = spinner_mat.getSelectedItem().toString().trim();
+        //final String id_ins_kls = spinner_ins.getSelectedItem().toString().trim();
+        //final String id_mat_kls = spinner_mat.getSelectedItem().toString().trim();
+        String n1 = String.valueOf(spinner_value);
+        String n2 = String.valueOf(spinner_value2);
 
         class SimpanDataPeserta extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;
@@ -196,8 +231,8 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
                 HashMap<String, String> params = new HashMap<>();
                 params.put(Konfigurasi.KEY_KLS_TGL_MULAI, tgl_mulai_kls);
                 params.put(Konfigurasi.KEY_KLS_TGL_SELESAI, tgl_akhir_kls);
-                params.put(Konfigurasi.KEY_KLS_INS, id_ins_kls);
-                params.put(Konfigurasi.KEY_KLS_MAT, id_mat_kls);
+                params.put(Konfigurasi.KEY_KLS_INS, n1);
+                params.put(Konfigurasi.KEY_KLS_MAT, n2);
                 HttpHandler handler = new HttpHandler();
                 String result = handler.sendPostRequest(Konfigurasi.URL_ADD_KELAS, params);
                 return result;
@@ -224,6 +259,4 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
         edit_tambah_tgl_akhir_kls.setText("");
         edit_tambah_tgl_mulai_kls.requestFocus();
     }
-
-
 }

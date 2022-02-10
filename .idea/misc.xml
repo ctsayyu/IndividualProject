@@ -17,7 +17,7 @@
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/activity_list_item_mat.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/activity_list_item_pst.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/activity_tambah_detail_kelas.xml" value="0.1" />
+        <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/activity_tambah_detail_kelas.xml" value="0.264" />
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/activity_tambah_instruktur.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/activity_tambah_kelas.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/activity_tambah_materi.xml" value="0.25416666666666665" />
@@ -30,7 +30,9 @@
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/fragment_kelas.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/fragment_materi.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/fragment_peserta.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/fragment_search_student_data.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/list_item_detail_kelas.xml" value="0.264" />
+        <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/list_item_search_student.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/layout/nav_header_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LEGION/AndroidStudioProjects/Project/app/src/main/res/menu/navigation_item.xml" value="0.25416666666666665" />
       </map>
