@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:text="XXX Learning Center Home"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#329932"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="Guest Registration"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/edit_guest_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Tuliskan Nama Anda"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edit_guest_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Tuliskan Email Anda"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/edit_guest_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Tuliskan Nomor HP Anda"
+        android:inputType="phone" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:id="@+id/radiobutton_perempuan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perempuan" />
+
+        <RadioButton
+            android:id="@+id/radiobutton_laki"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Laki-Laki" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_guest_daftar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DAFTAR GUEST"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>
