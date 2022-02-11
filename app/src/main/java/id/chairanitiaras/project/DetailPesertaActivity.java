@@ -106,7 +106,7 @@ public class DetailPesertaActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         if (view == btn_update_peserta) {
-            updateDataPeserta();
+            confirmUpdateDataPeserta();
         } else if (view == btn_delete_peserta) {
             confirmDeleteDataPeserta();
         }
@@ -169,6 +169,24 @@ public class DetailPesertaActivity extends AppCompatActivity implements View.OnC
         }
         DeleteDataPeserta deleteDataPeserta = new DeleteDataPeserta();
         deleteDataPeserta.execute();
+    }
+
+    private void confirmUpdateDataPeserta() {
+        // Confirmation Alert Dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Menghapus Data");
+        builder.setMessage("Apakah anda yakin input data Anda sudah benar?");
+        builder.setIcon(getResources().getDrawable(R.drawable.refresh));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Cancel", null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                updateDataPeserta();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 

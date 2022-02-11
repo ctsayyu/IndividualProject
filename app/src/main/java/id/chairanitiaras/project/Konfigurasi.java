@@ -102,6 +102,7 @@ public class Konfigurasi
     public static final String URL_ADD_DETAIL_KELAS = "http://192.168.100.132/inixtraining/detail_kelas/tr_add_detail_kelas.php";
     public static final String URL_UPDATE_DETAIL_KELAS = "http://192.168.100.132/inixtraining/detail_kelas/tr_update_detail_kelas.php";
     public static final String URL_DELETE_DETAIL_KELAS = "http://192.168.100.132/inixtraining/detail_kelas/tr_delete_detail_kelas.php?id_detail_kls=";
+    public static final String URL_DROPDOWN_INS_KLS = "http://192.168.100.132/inixtraining/detail_kelas/tr_dropdown_ins_kelas.php";
 
     // key and value JSON yang muncul di browser
     public static final String KEY_DT_KLS_ID_KLS = "id_kls";

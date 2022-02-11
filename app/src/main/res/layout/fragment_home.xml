@@ -24,7 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="39dp"
         android:text="Guest Registration"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edit_guest_name"
@@ -50,23 +51,39 @@
         android:hint="Tuliskan Nomor HP Anda"
         android:inputType="phone" />
 
-    <RadioGroup
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/radioGroup">
+        android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radiobutton_perempuan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Perempuan" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="98dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Gender"
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
-        <RadioButton
-            android:id="@+id/radiobutton_laki"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Laki-Laki" />
-    </RadioGroup>
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radiobutton_perempuan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Perempuan" />
+
+            <RadioButton
+                android:id="@+id/radiobutton_laki"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Laki-Laki" />
+        </RadioGroup>
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_guest_daftar"

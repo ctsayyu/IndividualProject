@@ -98,7 +98,7 @@ public class DetailMateriActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         if (view == btn_update_materi) {
-            updateDataMateri();
+            confirmUpdateDataMateri();
         } else if (view == btn_delete_materi) {
             confirmDeleteDataMateri();
         }
@@ -161,6 +161,24 @@ public class DetailMateriActivity extends AppCompatActivity implements View.OnCl
         deleteDataMateri.execute();
     }
 
+    private void confirmUpdateDataMateri() {
+        // Confirmation Alert Dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Mengupdate Data");
+        builder.setMessage("Apakah anda yakin input data Anda sudah benar?");
+        builder.setIcon(getResources().getDrawable(R.drawable.refresh));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Cancel", null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                updateDataMateri();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 
 
     private void updateDataMateri() {
@@ -196,7 +214,7 @@ public class DetailMateriActivity extends AppCompatActivity implements View.OnCl
                         "pesan: " + message, Toast.LENGTH_LONG).show();
                 // redirect ke LihatDataActivity
                 Intent myIntent2 = new Intent(DetailMateriActivity.this, MainActivity.class);
-                myIntent2.putExtra("keyName", "detail materi");
+                myIntent2.putExtra("keyName", "materi");
                 startActivity(myIntent2);
             }
         }

@@ -106,7 +106,7 @@ public class DetailKelasActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View view) {
         if (view == btn_update_kelas) {
-            updateDataKelas();
+            confirmUpdateDataKelas();
         } else if (view == btn_delete_kelas) {
             confirmDeleteDataKelas();
         }
@@ -171,7 +171,23 @@ public class DetailKelasActivity extends AppCompatActivity implements View.OnCli
         deleteDataKelas.execute();
     }
 
-
+    private void confirmUpdateDataKelas() {
+        // Confirmation Alert Dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Mengupdate Data");
+        builder.setMessage("Apakah anda yakin input data Anda sudah benar?");
+        builder.setIcon(getResources().getDrawable(R.drawable.refresh));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Cancel", null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                updateDataKelas();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
     private void updateDataKelas() {
         // data apa saja yang akan diubah

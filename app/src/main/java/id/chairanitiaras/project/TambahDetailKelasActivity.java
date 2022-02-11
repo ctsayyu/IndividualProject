@@ -26,9 +26,9 @@ import java.util.HashMap;
 public class TambahDetailKelasActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText edit_tambah_id_kls, edit_tambah_id_pst;
     private Button btn_tambah_detail_kls, btn_lihat_detail_kls;
-    Spinner spinner_pst;
-    int spinner_value;
-    String JSON_STRING;
+    Spinner spinner_pst, spinner_kls;
+    int spinner_value, spinner_value2;
+    String JSON_STRING, JSON_STRING2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -103,7 +103,7 @@ public class DetailInstrukturActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View view) {
         if (view == btn_update_instruktur) {
-            updateDataInstruktur();
+            confirmUpdateDataInstruktur();
         } else if (view == btn_delete_instruktur) {
             confirmDeleteDataInstruktur();
         }
@@ -165,6 +165,24 @@ public class DetailInstrukturActivity extends AppCompatActivity implements View.
         }
         DeleteDataInstruktur deleteDataInstruktur = new DeleteDataInstruktur();
         deleteDataInstruktur.execute();
+    }
+
+    private void confirmUpdateDataInstruktur() {
+        // Confirmation Alert Dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Mengupdate Data");
+        builder.setMessage("Apakah anda yakin input data Anda sudah benar?");
+        builder.setIcon(getResources().getDrawable(R.drawable.refresh));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Cancel", null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                updateDataInstruktur();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 
