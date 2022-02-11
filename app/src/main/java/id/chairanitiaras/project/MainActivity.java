@@ -154,6 +154,12 @@ public class MainActivity extends AppCompatActivity {
                         binding.drawer.closeDrawer(GravityCompat.START);
                         callFragment(fragment);
                         break;
+                    case R.id.nav_search_class_data:
+                        fragment = new SearchKelasFragment();
+                        getSupportActionBar().setTitle("Search Data Kelas");
+                        binding.drawer.closeDrawer(GravityCompat.START);
+                        callFragment(fragment);
+                        break;
                 }
                 return true;
             }

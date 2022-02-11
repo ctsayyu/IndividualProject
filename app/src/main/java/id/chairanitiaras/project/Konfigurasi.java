@@ -119,5 +119,6 @@ public class Konfigurasi
     // variabel ID pegawai
     public static final String DT_KLS_ID = "id_kls";;
 
-
+    public static final String URL_SEARCH_PST = "http://192.168.100.132/inixtraining/search/search_info_pst.php?id_pst=";
+    public static final String URL_SEARCH_KLS = "http://192.168.100.132/inixtraining/search/search_info_kls.php?id_kls=";
 }

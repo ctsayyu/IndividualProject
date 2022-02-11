@@ -2,8 +2,11 @@ package id.chairanitiaras.project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -19,6 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class TambahKelasActivity extends AppCompatActivity implements View.OnClickListener {
@@ -27,11 +32,13 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
     Spinner spinner_ins, spinner_mat;
     private int spinner_value, spinner_value2;
     private String JSON_STRING, JSON_STRING2, id_ins, n1, n2, j1, j2;
+    DatePickerDialog.OnDateSetListener setListener_mulai;
+    DatePickerDialog.OnDateSetListener setListener_akhir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tambah_kelas);
+        setContentView(R.layout.activity_tambah_kelas);;
 
         edit_tambah_tgl_mulai_kls = findViewById(R.id.edit_tambah_tgl_mulai_kls);
         edit_tambah_tgl_akhir_kls= findViewById(R.id.edit_tambah_tgl_akhir_kls);
@@ -42,6 +49,49 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
 
         btn_lihat_kelas.setOnClickListener(this);
         btn_tambah_kelas.setOnClickListener(this);
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        edit_tambah_tgl_mulai_kls.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        TambahKelasActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,setListener_mulai,year,month,day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        edit_tambah_tgl_akhir_kls.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        TambahKelasActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,setListener_akhir,year,month,day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener_mulai = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month+1;
+                String date = year+"-"+month+"-"+dayOfMonth;
+                edit_tambah_tgl_mulai_kls.setText(date);
+            }
+        };
+
+        setListener_akhir = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month+1;
+                String date = year+"-"+month+"-"+dayOfMonth;
+                edit_tambah_tgl_akhir_kls.setText(date);
+            }
+        };
 
         getJSON();
         getJSON2();

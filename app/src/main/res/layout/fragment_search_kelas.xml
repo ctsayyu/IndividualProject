@@ -12,15 +12,15 @@
         android:padding="16dp">
 
         <EditText
-            android:id="@+id/edit_search_id_pst"
+            android:id="@+id/edit_search_id_kls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Tuliskan ID Peserta"
+            android:hint="Tuliskan ID Kelas"
             android:inputType="number" />
 
         <Button
-            android:id="@+id/btn_search_pst"
+            android:id="@+id/btn_search_kls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SEARCH"

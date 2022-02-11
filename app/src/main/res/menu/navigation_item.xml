@@ -32,5 +32,13 @@
             android:id="@+id/nav_search_student_data"
             android:icon="@drawable/loupe"
             android:title="Search Data Peserta" />
+        <item
+            android:id="@+id/nav_search_instruktur_data"
+            android:icon="@drawable/loupe"
+            android:title="Search Data Instruktur" />
+        <item
+            android:id="@+id/nav_search_class_data"
+            android:icon="@drawable/loupe"
+            android:title="Search Data Kelas" />
     </group>
 </menu>
