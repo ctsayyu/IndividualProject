@@ -33,7 +33,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="XXX Learning Center"
+                    android:text="Green Learning Center"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -41,7 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="www.xxx.com"
+                    android:text="www.green-learning-center.com"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="normal" />

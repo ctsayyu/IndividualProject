@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -150,13 +151,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_search_student_data:
                         fragment = new SearchStudentDataFragment();
-                        getSupportActionBar().setTitle("Search Data Peserta");
-                        binding.drawer.closeDrawer(GravityCompat.START);
-                        callFragment(fragment);
-                        break;
-                    case R.id.nav_search_class_data:
-                        fragment = new SearchKelasFragment();
-                        getSupportActionBar().setTitle("Search Data Kelas");
+                        getSupportActionBar().setTitle("Search Data");
                         binding.drawer.closeDrawer(GravityCompat.START);
                         callFragment(fragment);
                         break;
@@ -176,5 +171,22 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frameLayout, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.custom_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_help:
+                Intent helpIntent = new Intent(MainActivity.this, HelpActivity.class);
+                startActivity(helpIntent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

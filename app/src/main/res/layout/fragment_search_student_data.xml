@@ -1,38 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchStudentDataFragment">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:paddingTop="30dp"
+    tools:context=".HomeFragment">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="sans-serif"
+        android:text="Greenies Information System"
+        android:textAlignment="center"
+        android:textColor="#005900"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Search Data"
+        android:textAlignment="center"
+        android:textColor="#005900"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="6dp"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="30dp">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Query" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:entries="@array/search_query" />
 
         <EditText
-            android:id="@+id/edit_search_id_pst"
+            android:id="@+id/edit_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Tuliskan ID Peserta"
+            android:hint="Tuliskan ID Peserta/Instruktur/Kelas"
             android:inputType="number" />
 
+
         <Button
-            android:id="@+id/btn_search_pst"
+            android:id="@+id/button_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SEARCH"
-            android:textColor="#FFFFFF" />
+            android:backgroundTint="@color/green1"
+            android:text="SEARCH" />
 
-        <ListView
-            android:id="@+id/list_view_search_kls"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible" >
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        </ListView>
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
 
     </LinearLayout>
-</FrameLayout>
+
+
+</LinearLayout>
