@@ -64,8 +64,9 @@
             android:id="@+id/button_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/green1"
-            android:text="SEARCH" />
+            android:backgroundTint="#004c00"
+            android:text="SEARCH"
+            android:textColor="#FFFFFF" />
 
         <FrameLayout
             android:layout_width="wrap_content"
