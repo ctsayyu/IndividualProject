@@ -20,4 +20,5 @@
         <item>2 (id_ins)informasi instruktur</item>
         <item>3 (id_kls)informasi kelas</item>
     </string-array>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

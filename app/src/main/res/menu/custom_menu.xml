@@ -5,4 +5,8 @@
         android:icon="@android:drawable/ic_menu_help"
         android:title="Help"
         app:showAsAction="never" />
+    <item android:id="@+id/menu_location"
+        android:icon="@drawable/location"
+        android:title="Our Location"
+        app:showAsAction="never" />
 </menu>

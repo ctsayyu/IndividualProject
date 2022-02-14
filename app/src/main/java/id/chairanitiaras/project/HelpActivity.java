@@ -1,16 +1,19 @@
 package id.chairanitiaras.project;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 public class HelpActivity extends AppCompatActivity {
-
+    ActionBar helpActionBar;
     EditText edit_nama, edit_email, edit_hp, edit_problem;
     Button btn_send;
 
@@ -18,6 +21,7 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
 
         edit_nama = findViewById(R.id.editTextTextPersonName);
         edit_email = findViewById(R.id.editTextTextEmailAddress);

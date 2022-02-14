@@ -186,6 +186,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent helpIntent = new Intent(MainActivity.this, HelpActivity.class);
                 startActivity(helpIntent);
                 break;
+            case R.id.menu_location:
+                Intent locationIntent = new Intent(MainActivity.this, HelpActivity.class);
+                startActivity(locationIntent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
